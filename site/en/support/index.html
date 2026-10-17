@@ -59,6 +59,23 @@
 </form>
 </article>
 </div>
+<script>
+  // Netlify keeps one redirect page per form name (it sent Ukrainian players to the English «Thank you»):
+  // send in the background and open this language's page; no JS / an error → the normal submit
+  (function () {
+    var f = document.querySelector('form[name="support"]');
+    if (!f || !window.fetch) return;
+    f.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var b = f.querySelector('button[type="submit"]');
+      if (b) b.disabled = true;
+      fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(new FormData(f)).toString() })
+        .then(function (r) { if (!r.ok) throw new Error(r.status); location.href = f.getAttribute('action'); })
+        .catch(function () { if (b) b.disabled = false; f.submit(); });
+    });
+  })();
+</script>
 </main>
 <footer class="foot"><div class="wrap">
   <nav><a href="/en/support/">Support</a><a href="/en/privacy/">Privacy Policy</a><a href="/en/terms/">Terms of Use</a><a href="/en/delete-account/">Delete your account</a></nav>
