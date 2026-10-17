@@ -1,0 +1,35 @@
+<div class="wrap narrow">
+<article class="doc">
+<h1>Support</h1>
+<p class="meta">We read every message and usually reply within 2 business days.</p>
+
+<p>Use the form or write to <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>. If something does not work, tell us what you were doing, which phone you play on and the game version (shown at the bottom of the loading screen or in Profile).</p>
+
+<form class="form" name="support" method="POST" action="/en/support/thanks/" data-netlify="true" netlify-honeypot="company">
+  <input type="hidden" name="form-name" value="support">
+  <input type="hidden" name="lang" value="en">
+  <p class="hp"><label>Leave this empty <input name="company" tabindex="-1" autocomplete="off"></label></p>
+  <label>Topic
+    <select name="topic" required>
+      <option value="help">How to play</option>
+      <option value="bug">Something is broken</option>
+      <option value="account">Account and purchases</option>
+      <option value="delete">Delete my account</option>
+      <option value="partner">Partnership</option>
+      <option value="other">Something else</option>
+    </select>
+  </label>
+  <label>Your email <small>— so we can reply</small>
+    <input type="email" name="email" required autocomplete="email" maxlength="200">
+  </label>
+  <label>Name <small>(optional)</small>
+    <input type="text" name="name" autocomplete="name" maxlength="100">
+  </label>
+  <label>Message
+    <textarea name="message" required maxlength="5000"></textarea>
+  </label>
+  <p><small>By sending the form you agree that we use this data to reply to you (see the <a href="{{en:privacy}}">Privacy Policy</a>).</small></p>
+  <div><button class="btn" type="submit">Send</button></div>
+</form>
+</article>
+</div>

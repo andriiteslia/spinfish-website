@@ -1,0 +1,12 @@
+# spinfish.app — the website. Netlify publishes the folder site/ as is (no build step;
+# the pages are built locally with `node tools/build-site.js` and committed).
+[build]
+  publish = "site"
+[[headers]]
+  for = "/*"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"

@@ -1,0 +1,35 @@
+<div class="wrap narrow">
+<article class="doc">
+<h1>Підтримка</h1>
+<p class="meta">Читаємо кожне повідомлення й зазвичай відповідаємо за 2 робочі дні.</p>
+
+<p>Напиши через форму або на пошту <a href="mailto:{{EMAIL}}">{{EMAIL}}</a>. Якщо щось не працює, опиши, що ти робив, на якому телефоні граєш і яка версія гри (її видно внизу екрана завантаження або в Профілі).</p>
+
+<form class="form" name="support" method="POST" action="/support/thanks/" data-netlify="true" netlify-honeypot="company">
+  <input type="hidden" name="form-name" value="support">
+  <input type="hidden" name="lang" value="uk">
+  <p class="hp"><label>Не заповнюй це поле <input name="company" tabindex="-1" autocomplete="off"></label></p>
+  <label>Тема
+    <select name="topic" required>
+      <option value="help">Як грати</option>
+      <option value="bug">Помилка в грі</option>
+      <option value="account">Акаунт і покупки</option>
+      <option value="delete">Видалити акаунт</option>
+      <option value="partner">Співпраця</option>
+      <option value="other">Інше</option>
+    </select>
+  </label>
+  <label>Твоя пошта <small>— щоб ми могли відповісти</small>
+    <input type="email" name="email" required autocomplete="email" maxlength="200">
+  </label>
+  <label>Ім’я <small>(необов’язково)</small>
+    <input type="text" name="name" autocomplete="name" maxlength="100">
+  </label>
+  <label>Повідомлення
+    <textarea name="message" required maxlength="5000"></textarea>
+  </label>
+  <p><small>Надсилаючи форму, ти погоджуєшся, що ми використаємо ці дані, щоб відповісти тобі (див. <a href="{{uk:privacy}}">Політику конфіденційності</a>).</small></p>
+  <div><button class="btn" type="submit">Надіслати</button></div>
+</form>
+</article>
+</div>
