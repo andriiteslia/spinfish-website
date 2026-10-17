@@ -61,8 +61,8 @@ img { max-width: 100%; height: auto; display: block; }
 
 /* hero (home) */
 .hero { position: relative; margin-top: -72px; padding: 112px 0 64px; color: #fff; overflow: hidden;
-  background: #2a76c4 url('/assets/hero-tall.webp') center 30% / cover no-repeat; }
-@media (min-width: 720px) { .hero { background-image: url('/assets/hero-wide.webp'); padding: 136px 0 88px; } }
+  background: #2a76c4 url('/assets/hero-river-tall.webp') center 30% / cover no-repeat; }
+@media (min-width: 720px) { .hero { background-image: url('/assets/hero-river-wide.webp'); padding: 136px 0 88px; } }
 .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(180deg, rgba(8, 36, 72, .42), rgba(8, 36, 72, .12) 45%, rgba(8, 36, 72, .55)); }
 .hero .wrap { position: relative; z-index: 1; display: grid; gap: 32px; align-items: center; }
 @media (min-width: 880px) { .hero .wrap { grid-template-columns: 1.1fr .9fr; } }

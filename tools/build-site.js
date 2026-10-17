@@ -12,7 +12,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, 'site-src');
 const OUT = path.join(ROOT, 'site');
-const V = '20261017b';                      // cache-busting for site.css
+const V = '20261017c';                      // cache-busting for site.css
 const ORIGIN = 'https://spinfish.app';
 const EMAIL = 'support@spinfish.app';
 
