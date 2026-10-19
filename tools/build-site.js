@@ -12,7 +12,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, 'site-src');
 const OUT = path.join(ROOT, 'site');
-const V = '20261017c';                      // cache-busting for site.css
+const V = '20261019a';                      // cache-busting for site.css
 const ORIGIN = 'https://spinfish.app';
 const EMAIL = 'support@spinfish.app';
 
@@ -53,11 +53,12 @@ ${P.noindex ? '<meta name="robots" content="noindex">\n' : ''}<link rel="canonic
 <link rel="alternate" hreflang="en" href="${ORIGIN}${url('en', page)}">
 <link rel="icon" type="image/png" sizes="192x192" href="/assets/icon-192.png">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="preload" href="/assets/manrope-${lang === 'uk' ? 'cyrillic' : 'latin'}.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fixel-display-regular.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fixel-display-bold.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/assets/site.css?v=${V}">
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${t.desc}">
-<meta property="og:image" content="${ORIGIN}/assets/shot-lakes.webp">
+<meta property="og:image" content="${ORIGIN}/assets/shot-lakes-2.webp">
 </head>
 <body class="${isHome ? 'is-hero' : ''}">
 <header class="top"><div class="wrap">
