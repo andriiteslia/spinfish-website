@@ -12,7 +12,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, 'site-src');
 const OUT = path.join(ROOT, 'site');
-const V = '20261019a';                      // cache-busting for site.css
+const V = '20261019b';                      // cache-busting for site.css
 const ORIGIN = 'https://spinfish.app';
 const EMAIL = 'support@spinfish.app';
 
@@ -62,8 +62,8 @@ ${P.noindex ? '<meta name="robots" content="noindex">\n' : ''}<link rel="canonic
 </head>
 <body class="${isHome ? 'is-hero' : ''}">
 <header class="top"><div class="wrap">
-  <a class="top__logo" href="${url(lang, 'home')}" aria-label="Spin Fish — ${t.home}"><img src="/assets/logo.webp" alt="Spin Fish" width="104" height="58"></a>
-  <nav class="top__nav" aria-label="${t.home}">${isHome ? '' : `<span class="top__links">${nav}</span>`}<span class="lang"><a href="${url('uk', page)}" hreflang="uk" lang="uk"${lang === 'uk' ? ' aria-current="true"' : ''}>УКР</a><a href="${url('en', page)}" hreflang="en" lang="en"${lang === 'en' ? ' aria-current="true"' : ''}>ENG</a></span></nav>
+  <a class="top__logo" href="${url(lang, 'home')}" aria-label="Spin Fish — ${t.home}"><img src="/assets/logo.webp" alt="Spin Fish" width="72" height="40"></a>
+  <nav class="top__nav" aria-label="${t.home}"><span class="top__links">${nav}</span><span class="lang"><a href="${url('uk', page)}" hreflang="uk" lang="uk"${lang === 'uk' ? ' aria-current="true"' : ''}>УКР</a><a href="${url('en', page)}" hreflang="en" lang="en"${lang === 'en' ? ' aria-current="true"' : ''}>ENG</a></span></nav>
 </div></header>
 <main id="main">
 ${body.trim()}
@@ -73,6 +73,7 @@ ${body.trim()}
   <p>${t.write}: <a href="mailto:${EMAIL}">${EMAIL}</a></p>
   <p>${t.copy}</p>
 </div></footer>
+<script>(function () { var a = document.querySelector('.top__links [aria-current="true"]'); var l = a && a.parentNode; if (l && l.scrollWidth > l.clientWidth) l.scrollLeft = a.offsetLeft - (l.clientWidth - a.offsetWidth) / 2; })();</script>
 </body>
 </html>
 `;
