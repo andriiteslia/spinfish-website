@@ -14,7 +14,7 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/assets/fixel-display-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fixel-display-bold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css?v=20261028a">
+<link rel="stylesheet" href="/assets/site.css?v=20261028b">
 <meta property="og:title" content="Spin Fish — spinning fishing game">
 <meta property="og:description" content="Spin Fish is a mobile spinning fishing game: swipe to cast, retrieve, strike and play the fish on Ukrainian waters.">
 <meta property="og:image" content="https://spinfish.app/assets/shot-lakes-4.webp">
@@ -22,7 +22,7 @@
 <body class="is-hero">
 <header class="top"><div class="wrap">
   <a class="top__logo" href="/en/" aria-label="Spin Fish — Home"><img src="/assets/logo.webp" alt="Spin Fish" width="72" height="40"></a>
-  <nav class="top__nav" aria-label="Home"><span class="top__links"><a href="/en/support/">Support</a><a href="/en/privacy/">Privacy Policy</a><a href="/en/terms/">Terms of Use</a><a href="/en/delete-account/">Delete your account</a></span><span class="lang"><a href="/" hreflang="uk" lang="uk">УКР</a><a href="/en/" hreflang="en" lang="en" aria-current="true">ENG</a></span></nav>
+  <nav class="top__nav" aria-label="Home"><span class="top__links"><a href="/en/#about">About the game</a><a href="/en/#screens">How it looks</a><a href="/en/support/">Support</a><details class="more"><summary>More<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="more__menu"><a href="/en/privacy/">Privacy Policy</a><a href="/en/terms/">Terms of Use</a><a href="/en/delete-account/">Delete your account</a></div></details></span><span class="lang"><a href="/" hreflang="uk" lang="uk">УКР</a><a href="/en/" hreflang="en" lang="en" aria-current="true">ENG</a></span></nav>
 </div></header>
 <main id="main">
 <section class="hero">
@@ -40,9 +40,9 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="about">
   <div class="wrap">
-    <h2>Like real fishing, only in your pocket</h2>
+    <h2>Fish anytime, anywhere</h2>
     <div class="grid">
       <div class="card"><h3>Cast and retrieve</h3><p>Swipe up to cast. Near or far, onto the shallows or over a deep hole — it decides who bites. The reel lever works the lure slowly, fast or in jerks.</p></div>
       <div class="card"><h3>Fight the fish</h3><p>The strike, line tension, the drag. A big zander pulls down, a pike dashes sideways and can bite through the fluoro leader, and a big fish at the shore still has to go into the landing net.</p></div>
@@ -57,7 +57,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="screens">
   <div class="wrap">
     <h2>How it looks</h2>
     <div class="shots">
@@ -84,6 +84,8 @@
   <p>Write to us: <a href="mailto:support@spinfish.app">support@spinfish.app</a></p>
   <p>© 2026 Spin Fish · Andrii Teslia, Ivano-Frankivsk, Ukraine</p>
 </div></footer>
-<script>(function () { var a = document.querySelector('.top__links [aria-current="true"]'); var l = a && a.parentNode; if (l && l.scrollWidth > l.clientWidth) l.scrollLeft = a.offsetLeft - (l.clientWidth - a.offsetWidth) / 2; })();</script>
+<script>(function () { var d = document.querySelector('.top .more'); if (!d) return;   // «Додатково»: closes on a tap outside and on Esc
+  document.addEventListener('click', function (e) { if (d.open && !d.contains(e.target)) d.open = false; });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && d.open) { d.open = false; d.querySelector('summary').focus(); } }); })();</script>
 </body>
 </html>

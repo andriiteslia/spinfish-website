@@ -14,7 +14,7 @@
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
 <link rel="preload" href="/assets/fixel-display-regular.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/assets/fixel-display-bold.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/assets/site.css?v=20261028a">
+<link rel="stylesheet" href="/assets/site.css?v=20261028b">
 <meta property="og:title" content="Spin Fish — спінінгова риболовля">
 <meta property="og:description" content="Spin Fish — мобільна гра про спінінгову риболовлю: закид свайпом, проводка, підсічка й виважування на водоймах України.">
 <meta property="og:image" content="https://spinfish.app/assets/shot-lakes-4.webp">
@@ -22,7 +22,7 @@
 <body class="is-hero">
 <header class="top"><div class="wrap">
   <a class="top__logo" href="/" aria-label="Spin Fish — Головна"><img src="/assets/logo.webp" alt="Spin Fish" width="72" height="40"></a>
-  <nav class="top__nav" aria-label="Головна"><span class="top__links"><a href="/support/">Підтримка</a><a href="/privacy/">Політика конфіденційності</a><a href="/terms/">Умови користування</a><a href="/delete-account/">Видалити акаунт</a></span><span class="lang"><a href="/" hreflang="uk" lang="uk" aria-current="true">УКР</a><a href="/en/" hreflang="en" lang="en">ENG</a></span></nav>
+  <nav class="top__nav" aria-label="Головна"><span class="top__links"><a href="/#about">Про гру</a><a href="/#screens">Як це виглядає</a><a href="/support/">Підтримка</a><details class="more"><summary>Додатково<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="more__menu"><a href="/privacy/">Політика конфіденційності</a><a href="/terms/">Умови користування</a><a href="/delete-account/">Видалити акаунт</a></div></details></span><span class="lang"><a href="/" hreflang="uk" lang="uk" aria-current="true">УКР</a><a href="/en/" hreflang="en" lang="en">ENG</a></span></nav>
 </div></header>
 <main id="main">
 <section class="hero">
@@ -40,9 +40,9 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="about">
   <div class="wrap">
-    <h2>Як справжня рибалка, тільки в кишені</h2>
+    <h2>Рибаль коли завгодно та де завгодно</h2>
     <div class="grid">
       <div class="card"><h3>Закид і проводка</h3><p>Свайп угору — закид. Далеко чи близько, на мілину чи на яму: від цього залежить, хто клюне. Важіль котушки веде приманку повільно, швидко чи ривками.</p></div>
       <div class="card"><h3>Бій з рибою</h3><p>Підсічка, натяг шнура, фрикціон. Великий судак тягне вниз, щука рветься вбік і може перекусити флюр, а велику рибу біля берега треба ще завести в підсак.</p></div>
@@ -57,7 +57,7 @@
   </div>
 </section>
 
-<section class="section">
+<section class="section" id="screens">
   <div class="wrap">
     <h2>Як це виглядає</h2>
     <div class="shots">
@@ -83,6 +83,8 @@
   <p>Пишіть нам: <a href="mailto:support@spinfish.app">support@spinfish.app</a></p>
   <p>© 2026 Spin Fish · Andrii Teslia, Івано-Франківськ, Україна</p>
 </div></footer>
-<script>(function () { var a = document.querySelector('.top__links [aria-current="true"]'); var l = a && a.parentNode; if (l && l.scrollWidth > l.clientWidth) l.scrollLeft = a.offsetLeft - (l.clientWidth - a.offsetWidth) / 2; })();</script>
+<script>(function () { var d = document.querySelector('.top .more'); if (!d) return;   // «Додатково»: closes on a tap outside and on Esc
+  document.addEventListener('click', function (e) { if (d.open && !d.contains(e.target)) d.open = false; });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && d.open) { d.open = false; d.querySelector('summary').focus(); } }); })();</script>
 </body>
 </html>

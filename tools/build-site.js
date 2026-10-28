@@ -12,7 +12,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, 'site-src');
 const OUT = path.join(ROOT, 'site');
-const V = '20261028a';                      // cache-busting for site.css
+const V = '20261028b';                      // cache-busting for site.css
 const ORIGIN = 'https://spinfish.app';
 const EMAIL = 'support@spinfish.app';
 
@@ -24,12 +24,13 @@ const PAGES = {
   support:   { path: 'support/',       uk: 'Підтримка', en: 'Support' },
   thanks:    { path: 'support/thanks/', uk: 'Дякуємо!', en: 'Thank you!', noindex: true },
 };
-const NAV = ['support', 'privacy', 'terms', 'delete'];
+const NAV = ['support', 'privacy', 'terms', 'delete'];   // the footer: all four
+const MORE = ['privacy', 'terms', 'delete'];             // the header: «Підтримка» + these three under «Додатково»
 const T = {
   uk: { desc: 'Spin Fish — мобільна гра про спінінгову риболовлю: закид свайпом, проводка, підсічка й виважування на водоймах України.',
-    home: 'Головна', copy: '© 2026 Spin Fish · Andrii Teslia, Івано-Франківськ, Україна', write: 'Пишіть нам', skip: 'До змісту' },
+    home: 'Головна', more: 'Додатково', about: 'Про гру', screens: 'Як це виглядає', copy: '© 2026 Spin Fish · Andrii Teslia, Івано-Франківськ, Україна', write: 'Пишіть нам', skip: 'До змісту' },
   en: { desc: 'Spin Fish is a mobile spinning fishing game: swipe to cast, retrieve, strike and play the fish on Ukrainian waters.',
-    home: 'Home', copy: '© 2026 Spin Fish · Andrii Teslia, Ivano-Frankivsk, Ukraine', write: 'Write to us', skip: 'Skip to content' },
+    home: 'Home', more: 'More', about: 'About the game', screens: 'How it looks', copy: '© 2026 Spin Fish · Andrii Teslia, Ivano-Frankivsk, Ukraine', write: 'Write to us', skip: 'Skip to content' },
 };
 const url = (lang, p) => `/${lang === 'en' ? 'en/' : ''}${PAGES[p].path}`;
 
@@ -37,7 +38,10 @@ function frame(lang, page, body) {
   const t = T[lang], P = PAGES[page];
   const other = lang === 'uk' ? 'en' : 'uk';
   const isHome = page === 'home';
-  const nav = NAV.map((p) => `<a href="${url(lang, p)}"${p === page ? ' aria-current="true"' : ''}>${PAGES[p][lang]}</a>`).join('');
+  const link = (p) => `<a href="${url(lang, p)}"${p === page ? ' aria-current="true"' : ''}>${PAGES[p][lang]}</a>`;
+  const inMore = MORE.includes(page);
+  const anchor = (id) => `<a href="${url(lang, 'home')}#${id}">${t[id]}</a>`;   // the home page's sections
+  const nav = anchor('about') + anchor('screens') + link('support') + `<details class="more"><summary${inMore ? ' aria-current="true"' : ''}>${t.more}<svg viewBox="0 0 12 12" width="12" height="12" aria-hidden="true"><path d="M3 4.5 6 7.5 9 4.5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></summary><div class="more__menu">${MORE.map(link).join('')}</div></details>`;
   const title = isHome ? P[lang] : `${P[lang]} — Spin Fish`;
   return `<!doctype html>
 <html lang="${lang}">
@@ -73,7 +77,9 @@ ${body.trim()}
   <p>${t.write}: <a href="mailto:${EMAIL}">${EMAIL}</a></p>
   <p>${t.copy}</p>
 </div></footer>
-<script>(function () { var a = document.querySelector('.top__links [aria-current="true"]'); var l = a && a.parentNode; if (l && l.scrollWidth > l.clientWidth) l.scrollLeft = a.offsetLeft - (l.clientWidth - a.offsetWidth) / 2; })();</script>
+<script>(function () { var d = document.querySelector('.top .more'); if (!d) return;   // «Додатково»: closes on a tap outside and on Esc
+  document.addEventListener('click', function (e) { if (d.open && !d.contains(e.target)) d.open = false; });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && d.open) { d.open = false; d.querySelector('summary').focus(); } }); })();</script>
 </body>
 </html>
 `;

@@ -25,7 +25,9 @@
     --blue: #6aa1ff; --blue-ink: #8ab4ff; --pill: #eef1f6; --pill-ink: #0b0f19; }
 }
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--top) + 12px); }
+html { -webkit-text-size-adjust: 100%; scroll-padding-top: calc(var(--top) + 12px); scroll-behavior: smooth; }
+@media (max-width: 760px) { html { scroll-padding-top: calc(var(--top) + 56px); } }   /* phones: the header has a second row (the tabs) */
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 body {
   margin: 0; background: var(--bg); color: var(--ink);
   font: 400 15px/1.6 'Fixel Display', system-ui, -apple-system, 'Segoe UI', sans-serif;
@@ -50,6 +52,21 @@ img { max-width: 100%; height: auto; display: block; }
   font-size: 14px; font-weight: 500; color: var(--sub); text-decoration: none; white-space: nowrap; }
 .top__links a:hover { color: var(--ink); }
 .top__links a[aria-current="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+/* «Додатково» — a dropdown with the documents (privacy, terms, delete account) */
+.more { position: relative; display: flex; align-items: stretch; }
+.more > summary { display: flex; align-items: center; gap: 4px; border-bottom: 2px solid transparent; margin-bottom: -1px; cursor: pointer;
+  font-size: 14px; font-weight: 500; color: var(--sub); white-space: nowrap; list-style: none; user-select: none; }
+.more > summary::-webkit-details-marker { display: none; }
+.more > summary:hover, .more[open] > summary { color: var(--ink); }
+.more > summary[aria-current="true"] { color: var(--ink); border-bottom-color: var(--ink); }
+.more > summary svg { transition: transform .15s ease; }
+.more[open] > summary svg { transform: rotate(180deg); }
+.more__menu { position: absolute; top: calc(100% + 6px); right: 0; z-index: 20; min-width: 240px; padding: 6px;
+  display: flex; flex-direction: column; background: var(--bg); border: 1px solid var(--line); border-radius: var(--r);
+  box-shadow: 0 12px 32px rgba(15, 23, 42, .12); }
+.top__links .more__menu a { display: block; padding: 10px 12px; margin: 0; border: 0; border-radius: 6px; font-size: 14px; color: var(--ink); }
+.top__links .more__menu a:hover { background: var(--bg2); }
+.top__links .more__menu a[aria-current="true"] { background: var(--bg2); font-weight: 600; }
 .lang { align-self: center; display: inline-flex; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; }
 .lang a { padding: 4px 9px; font-size: 12px; font-weight: 600; letter-spacing: .02em; color: var(--sub); text-decoration: none; }
 .lang a + a { border-left: 1px solid var(--line); }
@@ -62,7 +79,10 @@ img { max-width: 100%; height: auto; display: block; }
   .top__links { order: 3; width: calc(100% + 2 * var(--gutter)); margin: 8px calc(-1 * var(--gutter)) 0; padding: 0 var(--gutter);
     border-top: 1px solid var(--line); overflow-x: auto; scrollbar-width: none; gap: 20px; }
   .top__links::-webkit-scrollbar { display: none; }
-  .top__links a { min-height: 42px; }
+  .top__links a, .more > summary { min-height: 42px; }
+  /* the tabs scroll sideways; the dropdown hangs from the whole header (its containing block), so the scroll doesn't clip it */
+  .more { position: static; }
+  .more__menu { top: calc(100% + 6px); left: auto; right: 12px; }
 }
 
 /* hero (home) */
