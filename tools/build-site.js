@@ -12,7 +12,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, 'site-src');
 const OUT = path.join(ROOT, 'site');
-const V = '20261019b';                      // cache-busting for site.css
+const V = '20261028a';                      // cache-busting for site.css
 const ORIGIN = 'https://spinfish.app';
 const EMAIL = 'support@spinfish.app';
 
@@ -58,7 +58,7 @@ ${P.noindex ? '<meta name="robots" content="noindex">\n' : ''}<link rel="canonic
 <link rel="stylesheet" href="/assets/site.css?v=${V}">
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${t.desc}">
-<meta property="og:image" content="${ORIGIN}/assets/shot-lakes-2.webp">
+<meta property="og:image" content="${ORIGIN}/assets/shot-lakes-3.webp">
 </head>
 <body class="${isHome ? 'is-hero' : ''}">
 <header class="top"><div class="wrap">
