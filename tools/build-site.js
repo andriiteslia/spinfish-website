@@ -58,7 +58,7 @@ ${P.noindex ? '<meta name="robots" content="noindex">\n' : ''}<link rel="canonic
 <link rel="stylesheet" href="/assets/site.css?v=${V}">
 <meta property="og:title" content="${title}">
 <meta property="og:description" content="${t.desc}">
-<meta property="og:image" content="${ORIGIN}/assets/shot-lakes-3.webp">
+<meta property="og:image" content="${ORIGIN}/assets/shot-lakes-4.webp">
 </head>
 <body class="${isHome ? 'is-hero' : ''}">
 <header class="top"><div class="wrap">
