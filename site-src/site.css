@@ -162,3 +162,7 @@ main { padding-bottom: 24px; }
 .foot nav a { color: var(--ink); font-weight: 500; text-decoration: none; }
 .foot nav a:hover { color: var(--blue); }
 .foot p { margin: 0; }
+/* 16.11: a game picture over each card of «Рибаль коли завгодно» — in its own rounded frame, inset (Андрій's sketch) */
+.card.has-pic { padding: 8px 8px 20px; border-radius: 18px; }
+.card__pic { width: 100%; height: auto; aspect-ratio: 16 / 10; object-fit: cover; border-radius: 10px; background: var(--bg2); margin-bottom: 14px; }
+.card.has-pic h3, .card.has-pic p { padding: 0 12px; }
