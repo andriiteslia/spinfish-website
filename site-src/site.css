@@ -108,6 +108,7 @@ img { max-width: 100%; height: auto; display: block; }
 main { padding-bottom: 24px; }
 .section { padding: 64px 0 0; }
 .section h2 { margin: 0 0 24px; font-size: clamp(24px, 3.4vw, 32px); line-height: 1.15; font-weight: 700; letter-spacing: -.02em; }
+.stack { display: grid; gap: 12px; }
 .grid { display: grid; gap: 12px; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); }
 .card { background: var(--bg); border: 1px solid var(--line); border-radius: var(--r); padding: 20px; }
 .card h3 { margin: 0 0 6px; font-size: 16px; font-weight: 600; line-height: 1.35; letter-spacing: -.005em; }
