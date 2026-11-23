@@ -1,0 +1,35 @@
+<div class="wrap narrow">
+<section class="inv" id="inv">
+<span class="inv__ico"><svg viewBox="0 0 24 24" width="36" height="36" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13"/><path d="M19 12v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-7"/><path d="M7.5 8a2.5 2.5 0 0 1 0-5A4.8 8 0 0 1 12 8a4.8 8 0 0 1 4.5-5 2.5 2.5 0 0 1 0 5"/></svg></span>
+<h1>A friend invites you to Spin Fish</h1>
+<p class="inv__lead">Spin Fish is a spinning fishing game on Ukrainian waters. Install the game and enter your friend’s code: you become friends in the game at once. When you reach level 5, you both get 250 Scales and a pack of lures.</p>
+<div class="inv__code"><span>Friend’s code</span><b id="invCode">——————</b><button type="button" id="invCopy">Copy</button></div>
+<p class="inv__note" id="invNote">Enter the code in your first 3 days: Profile → “Have a friend’s code?”</p>
+<p class="inv__lead inv__none">The link has no code. Ask your friend to send it again: in the game, Profile → “Invite a friend”.</p>
+<div class="inv__stores">
+<a class="btn" id="invIos" href="#" aria-disabled="true">App Store</a>
+<a class="btn" id="invAnd" href="https://play.google.com/store/apps/details?id=app.spinfish.game">Google Play</a>
+</div>
+<ol class="inv__steps">
+<li><span>1</span>Install Spin Fish from the App Store or Google Play.</li>
+<li><span>2</span>Open Profile → “Have a friend’s code?” and enter the code.</li>
+<li><span>3</span>Reach level 5: a gift for you both.</li>
+</ol>
+</section>
+</div>
+<script>(function () {
+  // the code from the address: /i/K7M3PX or /en/i/K7M3PX (Netlify serves this page for /i/*)
+  var m = location.pathname.match(/\/i\/([A-Za-z0-9]{6})\/?$/), box = document.getElementById('inv');
+  var lang = (navigator.language || '').toLowerCase();
+  if ('en' === 'uk' && m && !/^(uk|ru)/.test(lang)) { location.replace('/en' + location.pathname); return; }   // not Ukrainian — the English page
+  var IOS = '';   // the App Store link (https://apps.apple.com/app/id…) — when the game is in the App Store
+  var ios = document.getElementById('invIos');
+  if (IOS) { ios.href = IOS; ios.removeAttribute('aria-disabled'); } else ios.textContent = 'App Store: soon';
+  if (!m) { box.className += ' is-none'; return; }
+  var code = m[1].toUpperCase();
+  document.getElementById('invCode').textContent = code;
+  document.getElementById('invCopy').addEventListener('click', function () {
+    var b = this, done = function () { b.textContent = 'Copied'; };
+    if (navigator.clipboard) navigator.clipboard.writeText(code).then(done, function () {}); else done();
+  });
+})();</script>

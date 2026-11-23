@@ -12,7 +12,7 @@ const path = require('path');
 const ROOT = path.join(__dirname, '..');
 const SRC = path.join(ROOT, 'site-src');
 const OUT = path.join(ROOT, 'site');
-const V = '20261028b';                      // cache-busting for site.css
+const V = '20261123a';                      // cache-busting for site.css
 const ORIGIN = 'https://spinfish.app';
 const EMAIL = 'support@spinfish.app';
 
@@ -23,6 +23,7 @@ const PAGES = {
   delete:    { path: 'delete-account/', uk: 'Видалити акаунт', en: 'Delete your account' },
   support:   { path: 'support/',       uk: 'Підтримка', en: 'Support' },
   thanks:    { path: 'support/thanks/', uk: 'Дякуємо!', en: 'Thank you!', noindex: true },
+  invite:    { path: 'i/',             uk: 'Запрошення в Spin Fish', en: 'An invitation to Spin Fish', noindex: true },   // 23.11 (076): spinfish.app/i/<code>
 };
 const NAV = ['support', 'privacy', 'terms', 'delete'];   // the footer: all four
 const MORE = ['privacy', 'terms', 'delete'];             // the header: «Підтримка» + these three under «Додатково»
@@ -111,5 +112,7 @@ fs.writeFileSync(path.join(OUT, '_headers'), `/*
   X-Frame-Options: DENY
   Permissions-Policy: camera=(), microphone=(), geolocation=()
 `);
+// 23.11 (076): «Запросити друга» — spinfish.app/i/<code> (and /en/i/<code>) show the invite page; the code is read from the address
+fs.writeFileSync(path.join(OUT, '_redirects'), `/i/*     /i/index.html     200\n/en/i/*  /en/i/index.html  200\n`);
 // Netlify config — netlify.toml at the repo root (publish = "site", no build step)
-console.log(`site/: ${n} pages + 404, robots.txt, sitemap.xml, _headers`);
+console.log(`site/: ${n} pages + 404, robots.txt, sitemap.xml, _headers, _redirects`);

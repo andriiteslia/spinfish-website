@@ -167,3 +167,24 @@ main { padding-bottom: 24px; }
 .card.has-pic { padding: 8px 8px 20px; border-radius: 18px; }
 .card__pic { width: 100%; height: auto; aspect-ratio: 16 / 15; object-fit: cover; border-radius: 10px; background: var(--bg2); margin-bottom: 14px; }
 .card.has-pic h3, .card.has-pic p { padding: 0 12px; }
+
+/* 23.11 (076): spinfish.app/i/<code> — «Друг запрошує вас у Spin Fish»: the gift, the code (copy), the store buttons */
+.inv { padding: 48px 0 24px; text-align: center; }
+.inv__ico { display: inline-flex; align-items: center; justify-content: center; width: 72px; height: 72px; border-radius: 20px; background: #fff4d6; color: #7a5300; }
+.inv h1 { margin: 16px 0 8px; font-size: clamp(26px, 4.4vw, 34px); line-height: 1.15; font-weight: 700; letter-spacing: -.02em; }
+.inv__lead { margin: 0 auto; max-width: 520px; color: var(--sub); font-size: 16px; line-height: 1.5; }
+.inv__code { display: flex; align-items: center; justify-content: center; gap: 12px; margin: 28px auto 8px; max-width: 360px; height: 64px; padding: 0 12px 0 20px;
+  border-radius: 16px; background: var(--bg2); border: 1px solid var(--line); }
+.inv__code span { color: var(--sub); font-size: 14px; white-space: nowrap; }
+.inv__code b { flex: 1; font-size: 26px; letter-spacing: 4px; }
+.inv__code button { height: 40px; padding: 0 14px; border: 0; border-radius: 10px; background: var(--pill); color: var(--pill-ink); font: inherit; font-size: 14px; font-weight: 600; cursor: pointer; }
+.inv__note { margin: 0 0 28px; color: var(--sub); font-size: 13px; }
+.inv__stores { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+.inv__stores .btn { min-width: 180px; min-height: 48px; font-size: 16px; }
+.inv__stores .btn[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+.inv__steps { margin: 36px auto 0; max-width: 520px; padding: 0; list-style: none; text-align: left; display: grid; gap: 12px; }
+.inv__steps li { display: flex; gap: 12px; align-items: flex-start; line-height: 1.45; }
+.inv__steps li > span { flex: none; display: inline-flex; align-items: center; justify-content: center; width: 28px; height: 28px; border-radius: 50%; background: var(--bg2); border: 1px solid var(--line); font-weight: 700; font-size: 14px; }
+.inv__none { display: none; }
+.inv.is-none .inv__code, .inv.is-none .inv__note { display: none; }
+.inv.is-none .inv__none { display: block; }
