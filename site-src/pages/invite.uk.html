@@ -8,7 +8,7 @@
 <p class="inv__lead inv__none">Посилання без коду. Попросіть друга надіслати його ще раз — у грі: Профіль → «Запросити друга».</p>
 <div class="inv__stores">
 <a class="btn" id="invIos" href="#" aria-disabled="true">App Store</a>
-<a class="btn" id="invAnd" href="https://play.google.com/store/apps/details?id=app.spinfish.game">Google Play</a>
+<a class="btn" id="invAnd" href="#" aria-disabled="true">Google Play</a>
 </div>
 <ol class="inv__steps">
 <li><span>1</span>Встановіть Spin Fish з App Store або Google Play.</li>
@@ -22,8 +22,12 @@
   var m = location.pathname.match(/\/i\/([A-Za-z0-9]{6})\/?$/), box = document.getElementById('inv');
   var lang = (navigator.language || '').toLowerCase();
   if ('uk' === 'uk' && m && !/^(uk|ru)/.test(lang)) { location.replace('/en' + location.pathname); return; }   // not Ukrainian — the English page
-  var IOS = '';   // the App Store link (https://apps.apple.com/app/id…) — when the game is in the App Store
+  // the store links — when the game is out (until then the buttons say «скоро» and do nothing)
+  var IOS = '';   // https://apps.apple.com/app/id<Apple ID>
+  var AND = '';   // https://play.google.com/store/apps/details?id=app.spinfish.game
   var ios = document.getElementById('invIos');
+  var and = document.getElementById('invAnd');
+  if (AND) { and.href = AND; and.removeAttribute('aria-disabled'); } else and.textContent = 'Google Play — скоро';
   if (IOS) { ios.href = IOS; ios.removeAttribute('aria-disabled'); } else ios.textContent = 'App Store — скоро';
   if (!m) { box.className += ' is-none'; return; }
   var code = m[1].toUpperCase();
